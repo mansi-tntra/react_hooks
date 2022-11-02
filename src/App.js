@@ -22,17 +22,16 @@ import {CounterUseImperativeHandle} from "./hooks/useImperativeHandle";
 // export default CounterUseContext
 function App() {
     const [count , setCount]= useState(0)
-    const counterRef = useRef(null);
+    const counterRef = useRef();
   return (
     <div className="App">
         <div>
+            {/*<CounterCallBack/>*/}
             <CounterUseImperativeHandle  ref={counterRef}/>
             <button onClick={()=>counterRef.current.increment()}>Increment</button>
             <button onClick={()=>counterRef.current.decrement()}>Decrement</button>
             <button onClick={()=>counterRef.current.reset()}>Reset</button>
             <button onClick={()=>counterRef.current.getCount()}>Get count</button>
-            {/*<div>count:{counterRef.current.getCount}</div>*/}
-
         </div>
     </div>
   );

@@ -9,7 +9,7 @@ export const CounterCallBack = ()=>{
         return count*2
     },[count])
     const CountRef = useRef(0);
-
+    // CountRef.current = count
     useEffect(()=>{
         CountRef.current = count
     },[count])
