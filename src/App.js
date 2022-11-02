@@ -1,23 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import Counter from "./hooks/useState";
+import CounterUseEffect from "./hooks/useEffect";
+import React, { useState,useRef} from "react";
+import {CounterContext} from "./hooks/useContext";
+import CounterUseContext from "./hooks/useContext";
+import {CounterUseReducer} from "./hooks/useReducer";
+import {CounterCallBack} from "./hooks/useCallBack";
+import {CounterUseLayoutEffect} from "./hooks/useLayoutEffect";
+import {CounterUseDebugValue} from "./hooks/useDebugValue";
+import {CounterUseImperativeHandle} from "./hooks/useImperativeHandle";
 
+// const CounterContext = React.createContext();
+// // const CounterContext = React.createContext();
+//
+// const CounterUseContext = () =>{
+//     const count = useContext(CounterContext)
+//     console.log(count)
+//     return  <h1>{count}</h1>
+// }
+// export default CounterUseContext
 function App() {
+    const [count , setCount]= useState(0)
+    const counterRef = useRef(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div>
+            <CounterUseImperativeHandle  ref={counterRef}/>
+            <button onClick={()=>counterRef.current.increment()}>Increment</button>
+            <button onClick={()=>counterRef.current.decrement()}>Decrement</button>
+            <button onClick={()=>counterRef.current.reset()}>Reset</button>
+            <button onClick={()=>counterRef.current.getCount()}>Get count</button>
+            {/*<div>count:{counterRef.current.getCount}</div>*/}
+
+        </div>
     </div>
   );
 }
